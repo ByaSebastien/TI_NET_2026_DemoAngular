@@ -1,0 +1,10 @@
+<h2>Product details</h2>
+<div class="product-card">
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price }}</h4>
+  <img height="100" [src]="product.imageUrl" [alt]="'Image de ' + product.name">
+  <p>{{ product.description }}</p>
+  <label for="rating">Rating : </label>
+  <input type="text" [(ngModel)]="rating">
+  <button (click)="onClick($event)">Buy!!!</button>
+</div>

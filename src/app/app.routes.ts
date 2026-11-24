@@ -17,13 +17,16 @@ export const routes: Routes = [
   {
     path: 'product',
     loadComponent: () =>
-      import('./pages/product-index/product-index').then(
-        (m) => m.ProductIndex,
-      ),
+      import('./pages/product-index/product-index').then((m) => m.ProductIndex),
   },
   {
     path: 'todo',
     loadComponent: () =>
       import('./pages/todo-list/todo-list').then((m) => m.TodoList),
+  },
+  {
+    path: 'chrono',
+    loadComponent: () =>
+      import('./pages/chrono/chrono').then((m) => m.Chrono),
   },
 ];

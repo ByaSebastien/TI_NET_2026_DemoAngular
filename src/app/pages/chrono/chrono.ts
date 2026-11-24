@@ -1,20 +1,42 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, OnDestroy, signal, WritableSignal } from '@angular/core';
+import { TimePipe } from '../../pipes/time-pipe';
 
 @Component({
-  imports: [],
+  imports: [TimePipe],
   selector: 'app-chrono',
   styleUrl: './chrono.scss',
   templateUrl: './chrono.html',
 })
-export class Chrono {
+export class Chrono implements OnDestroy{
+  secondes = signal(0);
+  timer?: number;
 
-  title: WritableSignal<string> = signal('Chrono');
+  start() {
+    if (this.timer) {
+      return;
+    }
+    this.timer = setInterval(() => {
+      this.secondes.update((s) => s + 1);
+      console.log('ahah');
+    }, 1000);
+  }
 
-  constructor() {
+  stop() {
+    if (!this.timer) {
+      return;
+    }
+    clearInterval(this.timer);
+    this.timer = undefined;
+  }
 
-    setTimeout(() => {
-      this.title.set('Bou!!!');
-      console.log(this.title());
-    }, 3000);
+  reset() {
+    if (this.timer) {
+      return;
+    }
+    this.secondes.set(0);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
   }
 }

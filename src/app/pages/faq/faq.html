@@ -1,0 +1,24 @@
+<h2>FAQ</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Questions</th>
+    <th>Responses</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (faq of faqs(); track faq.id) {
+      <tr>
+        <td>{{faq.question}}</td>
+        <td>{{faq.response}}</td>
+        <td>
+          <button (click)="voteUp()">👌</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+  <tfoot>
+    <h4>Ok?!</h4>
+  </tfoot>
+</table>

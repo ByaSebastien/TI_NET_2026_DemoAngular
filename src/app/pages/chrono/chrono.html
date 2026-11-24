@@ -1,1 +1,5 @@
-<h2>{{ title() }}</h2>
+<h2>Chrono</h2>
+<h3>{{ secondes() | time }}</h3>
+<button (click)="start()" [disabled]="timer">Start</button>
+<button (click)="stop()" [disabled]="!timer">Stop</button>
+<button (click)="reset()" [disabled]="timer || secondes() == 0">Reset</button>

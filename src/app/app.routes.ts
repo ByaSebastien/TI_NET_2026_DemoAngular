@@ -26,7 +26,10 @@ export const routes: Routes = [
   },
   {
     path: 'chrono',
-    loadComponent: () =>
-      import('./pages/chrono/chrono').then((m) => m.Chrono),
+    loadComponent: () => import('./pages/chrono/chrono').then((m) => m.Chrono),
+  },
+  {
+    path: 'faq',
+    loadComponent: () => import('./pages/faq/faq').then((m) => m.Faq),
   },
 ];

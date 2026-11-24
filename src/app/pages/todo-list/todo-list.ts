@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskDto } from '../../models/task-dto';
 import { NgClass } from '@angular/common';
+import { GsapHover } from '../../directives/gsap-hover';
 
 @Component({
-  imports: [FormsModule, NgClass],
+  imports: [FormsModule, NgClass, GsapHover],
   selector: 'app-todo-list',
   styleUrl: './todo-list.scss',
   templateUrl: './todo-list.html',

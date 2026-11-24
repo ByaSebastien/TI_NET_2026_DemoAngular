@@ -1,6 +1,6 @@
 <label for="task">Task : </label>
 <input type="text" [(ngModel)]="taskInput">
-<button (click)="addTask()">Add</button>
+<button (click)="addTask()" appGsapHover>Add</button>
 
 <ul>
 @for (t of tasks; track t.title) {

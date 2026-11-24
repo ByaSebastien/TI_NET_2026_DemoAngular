@@ -1,0 +1,12 @@
+<label for="task">Task : </label>
+<input type="text" [(ngModel)]="taskInput">
+<button (click)="addTask()">Add</button>
+
+<ul>
+@for (t of tasks; track t.title) {
+  <li>
+    <p [ngClass]="{'done': t.done}">{{ t.title }}</p>
+    <button (click)="checkTask($index)">{{ t.done ? '❎' : '✅' }}</button>
+  </li>
+}
+</ul>

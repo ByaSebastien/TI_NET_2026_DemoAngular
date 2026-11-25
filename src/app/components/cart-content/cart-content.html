@@ -2,8 +2,8 @@
 <ul>
   @for (cl of cartLines(); track cl.product.id) {
     <li>
-      <p>{{cl.product.name}}</p>
-      <p>{{cl.quantity}}</p>
+      <p>{{ cl.product.name }}</p>
+      <p>{{ cl.quantity }}</p>
       <div class="buttons">
         <button (click)="minus.emit(cl.product.id)">➖</button>
         <button (click)="plus.emit(cl.product.id)">➕</button>
@@ -13,4 +13,5 @@
   } @empty {
     <p>Empty cart</p>
   }
+  <p>Total : {{ total() | money }}</p>
 </ul>

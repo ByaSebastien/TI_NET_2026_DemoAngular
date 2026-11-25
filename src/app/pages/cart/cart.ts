@@ -44,11 +44,23 @@ export class Cart {
   cart: WritableSignal<CartLineDto[]> = signal<CartLineDto[]>([]);
 
   addToCart(productId: number) {
-    let selectedProduct = this.products().find((p) => p.id === productId);
-    if (!selectedProduct) {
-      return;
-    }
-    this.cart.update((c) => [...c, { product: selectedProduct, quantity: 1 }]);
+    this.cart.update((c) => {
+      if (c.some((cl) => cl.product.id === productId)) {
+        return c.map((cl) =>
+          cl.product.id === productId
+            ? { ...cl, quantity: cl.quantity + 1 }
+            : { ...cl },
+        );
+      }
+      let product = this.products().find((p) => p.id === productId)!;
+      return [
+        ...c,
+        {
+          product,
+          quantity: 1,
+        },
+      ];
+    });
   }
 
   minusOne(productId: number) {

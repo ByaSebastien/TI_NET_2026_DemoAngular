@@ -1,0 +1,16 @@
+<ul>
+  @for (product of products(); track product.id) {
+    <li>
+      <img [src]="product.imageUrl" alt="image">
+      <p>{{product.name}}</p>
+      <p>{{product.price | money}}</p>
+      <button (click)="addToCart(product.id)">Add to cart</button>
+    </li>
+  }
+</ul>
+<app-cart-content
+  [cartLines]="cart()"
+  (minus)="minusOne($event)"
+  (plus)="plusOne($event)"
+  (remove)="removeFromCart($event)"
+  />

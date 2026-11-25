@@ -32,4 +32,8 @@ export const routes: Routes = [
     path: 'faq',
     loadComponent: () => import('./pages/faq/faq').then((m) => m.Faq),
   },
+  {
+    path: 'cart',
+    loadComponent: () => import('./pages/cart/cart').then((m) => m.Cart),
+  },
 ];

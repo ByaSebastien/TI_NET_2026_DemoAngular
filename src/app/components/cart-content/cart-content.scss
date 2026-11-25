@@ -1,0 +1,32 @@
+:host{
+
+  h2 {
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-bottom: 1px solid black;
+      padding: 1rem;
+
+      * {
+        width: 25%;
+      }
+
+      img {
+        width: 100px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-around;
+      }
+
+    }
+  }
+}

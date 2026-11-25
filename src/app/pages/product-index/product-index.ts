@@ -1,16 +1,11 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { ProductDto } from '../../models/product.dto';
-import { NgClass, UpperCasePipe } from '@angular/common';
-import { MoneyPipe } from '../../pipes/money-pipe';
 import { GsapEntrance } from '../../directives/gsap-entrance';
 import { ProductCard } from '../../components/product-card/product-card';
 import { ConfirmDialog } from '../../components/confirm-dialog/confirm-dialog';
 
 @Component({
   imports: [
-    UpperCasePipe,
-    MoneyPipe,
-    NgClass,
     GsapEntrance,
     ProductCard,
     ConfirmDialog,

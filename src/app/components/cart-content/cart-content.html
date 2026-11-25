@@ -1,0 +1,16 @@
+<h2>Cart</h2>
+<ul>
+  @for (cl of cartLines(); track cl.product.id) {
+    <li>
+      <p>{{cl.product.name}}</p>
+      <p>{{cl.quantity}}</p>
+      <div class="buttons">
+        <button (click)="minus.emit(cl.product.id)">➖</button>
+        <button (click)="plus.emit(cl.product.id)">➕</button>
+        <button (click)="remove.emit(cl.product.id)">❌</button>
+      </div>
+    </li>
+  } @empty {
+    <p>Empty cart</p>
+  }
+</ul>

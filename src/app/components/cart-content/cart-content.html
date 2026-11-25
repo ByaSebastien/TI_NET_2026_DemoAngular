@@ -5,9 +5,9 @@
       <p>{{ cl.product.name }}</p>
       <p>{{ cl.quantity }}</p>
       <div class="buttons">
-        <button (click)="minus.emit(cl.product.id)">➖</button>
-        <button (click)="plus.emit(cl.product.id)">➕</button>
-        <button (click)="remove.emit(cl.product.id)">❌</button>
+        <button (click)="minusOne(cl.product.id)">➖</button>
+        <button (click)="plusOne(cl.product.id)">➕</button>
+        <button (click)="remove(cl.product.id)">❌</button>
       </div>
     </li>
   } @empty {

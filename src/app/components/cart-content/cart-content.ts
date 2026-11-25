@@ -1,6 +1,7 @@
-import { Component, computed, input, InputSignal, output } from '@angular/core';
+import { Component, computed, inject, input, InputSignal, output, Signal } from '@angular/core';
 import { CartLineDto } from '../../models/cart-line.dto';
 import { MoneyPipe } from '../../pipes/money-pipe';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   imports: [MoneyPipe],
@@ -9,14 +10,22 @@ import { MoneyPipe } from '../../pipes/money-pipe';
   templateUrl: './cart-content.html',
 })
 export class CartContent {
-  cartLines = input.required<CartLineDto[]>();
-  minus = output<number>();
-  plus = output<number>();
-  remove = output<number>();
 
-  total = computed<number>(() => {
-    return this.cartLines()
-      .map((cl) => cl.product.price * cl.quantity)
-      .reduce((a, b) => a + b, 0);
-  });
+  private readonly _cartService = inject(CartService);
+
+  cartLines: Signal<CartLineDto[]> = this._cartService.cart;
+
+  total = this._cartService.total;
+
+  minusOne(productId: number) {
+    this._cartService.minusOne(productId);
+  }
+
+  plusOne(productId: number) {
+    this._cartService.plusOne(productId);
+  }
+
+  remove(productId: number) {
+    this._cartService.removeFromCart(productId);
+  }
 }

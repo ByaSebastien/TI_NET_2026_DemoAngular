@@ -1,5 +1,5 @@
 <div class="content" appGsapEntrance>
-  @for (p of products; track p.id) {
+  @for (p of products(); track p.id) {
     <app-product-card
       class="card"
       [product]="p"

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, InputSignal, output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -8,7 +8,7 @@ import { Component, input, output } from '@angular/core';
 })
 export class ConfirmDialog {
 
-  productName = input.required<string>();
+  productName: InputSignal<string> = input.required<string>();
   confirm = output<void>();
   cancel = output<void>();
 

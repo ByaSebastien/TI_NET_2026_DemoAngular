@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  width: 40%;
+  background-color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid red;
+  border-radius: 5px;
+
+  h3 {
+    text-align: center;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+
+    button {
+      padding: 0.5rem;
+    }
+  }
+}

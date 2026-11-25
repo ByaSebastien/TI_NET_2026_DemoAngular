@@ -1,0 +1,9 @@
+<h3>{{ product().name | uppercase }}</h3>
+<h4>{{ product().price | money }}</h4>
+<img [src]="product().imageUrl" alt="image">
+@if (product().description!.length <= 100) {
+  <p>{{ product().description }}</p>
+} @else {
+  <p>{{ product().description?.substring(0, 97) + '...' }}</p>
+}
+<button (click)="askDelete()">❌</button>

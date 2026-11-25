@@ -1,17 +1,19 @@
 <div class="content" appGsapEntrance>
   @for (p of products; track p.id) {
-    <div class="product-card" [ngClass]="{ 'odd': $odd, 'even': $even}">
-      <h3>{{ p.name | uppercase }}</h3>
-      <h4>{{ p.price | money }}</h4>
-      <img [src]="p.imageUrl" alt="image">
-      @if (p.description!.length <= 50) {
-        <p>{{ p.description }}</p>
-      } @else {
-        <p>{{ p.description?.substring(47) + '...' }}</p>
-      }
-    </div>
+    <app-product-card
+      class="card"
+      [product]="p"
+      (delete)="handleWantToDelete($event)"
+    ></app-product-card>
   } @empty {
     <p>No product</p>
   }
 </div>
+@if (selectedProduct()) {
+  <app-confirm-dialog
+    [productName]="selectedProduct()!.name"
+    (confirm)="handleConfirm()"
+    (cancel)="handleCancel()"
+  ></app-confirm-dialog>
+}
 

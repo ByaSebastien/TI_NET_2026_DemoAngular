@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 import { ProductDto } from '../../models/product.dto';
 import { NgClass, UpperCasePipe } from '@angular/common';
 import { MoneyPipe } from '../../pipes/money-pipe';
 import { GsapEntrance } from '../../directives/gsap-entrance';
+import { ProductCard } from '../../components/product-card/product-card';
+import { ConfirmDialog } from '../../components/confirm-dialog/confirm-dialog';
 
 @Component({
-  imports: [UpperCasePipe, MoneyPipe, NgClass, GsapEntrance],
+  imports: [
+    UpperCasePipe,
+    MoneyPipe,
+    NgClass,
+    GsapEntrance,
+    ProductCard,
+    ConfirmDialog,
+  ],
   selector: 'app-product-index',
   styleUrl: './product-index.scss',
   templateUrl: './product-index.html',
@@ -31,7 +40,7 @@ export class ProductIndex {
         'https://gaming-cdn.com/images/products/14129/616x353/enshrouded-pc-steam-cover.jpg?v=1795089027',
     },
     {
-      id: 1,
+      id: 3,
       name: 'The Legend of Zelda: Ocarina of Time',
       price: 54.29,
       description:
@@ -40,4 +49,20 @@ export class ProductIndex {
         'https://gaming-cdn.com/images/products/22210/616x353/the-legend-of-zelda-ocarina-of-time-switch-2-nintendo-eshop-cover.jpg?v=1790857913',
     },
   ];
+
+  selectedProduct: WritableSignal<ProductDto | undefined> = signal(undefined);
+
+  handleWantToDelete(productId: number) {
+    let product = this.products.find((product) => product.id === productId);
+    this.selectedProduct.set(product);
+  }
+
+  handleConfirm() {
+    this.products = this.products.filter(p => p.id !== this.selectedProduct()!.id);
+    this.selectedProduct.set(undefined);
+  }
+
+  handleCancel() {
+    this.selectedProduct.set(undefined);
+  }
 }

@@ -8,7 +8,7 @@ export class GsapEntrance implements AfterViewInit {
   el: ElementRef = inject(ElementRef);
 
   ngAfterViewInit(): void {
-    gsap.from(this.el.nativeElement.querySelectorAll('div'),{
+    gsap.from(this.el.nativeElement.querySelectorAll('.card'),{
       x: -100,
       y: -25,
       opacity: 0,

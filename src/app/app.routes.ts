@@ -36,4 +36,8 @@ export const routes: Routes = [
     path: 'cart',
     loadComponent: () => import('./pages/cart/cart').then((m) => m.Cart),
   },
+  {
+    path: 'yugi',
+    loadComponent: () => import('./pages/yu-gi-oh/yu-gi-oh').then((m) => m.YuGiOh),
+  },
 ];
